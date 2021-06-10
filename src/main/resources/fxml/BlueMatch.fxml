@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unofficial.bluematchgroup.bluematch.controllers.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unofficial.bluematchgroup.bluematch.controllers.Controller">
     <center>
         <TableView fx:id="overviewRecordTable" onMouseClicked="#tableViewMouseClicked" prefHeight="548.0" prefWidth="899.0" stylesheets="@/css/styles.css" BorderPane.alignment="CENTER">
             <columns>
@@ -58,31 +70,35 @@
     <left>
         <Pane minWidth="-Infinity" prefHeight="543.0" prefWidth="135.0" style="-fx-background-color: #e0e0e0;" BorderPane.alignment="CENTER">
             <children>
-            <ComboBox fx:id="statusKlantCombo" layoutX="3.0" layoutY="50.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="Geen filter" />
-            <Label layoutX="88.0" layoutY="255.0" prefHeight="37.0" prefWidth="67.0" rotate="-90.0" text="Filter" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font></Label>
-            <Label layoutX="5.0" layoutY="33.0" text="Status bij klant" textFill="#6e6d6d">
-               <font>
-                  <Font name="Calibri" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="5.0" layoutY="88.0" text="Status aanbieding" textFill="#6e6d6d">
-               <font>
-                  <Font name="Calibri" size="14.0" />
-               </font></Label>
-            <ComboBox fx:id="statusAanbiedingCombo" layoutX="3.0" layoutY="105.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="Geen filter" />
-            <Label layoutX="5.0" layoutY="143.0" text="Broker" textFill="#6e6d6d">
-               <font>
-                  <Font name="Calibri" size="14.0" />
-               </font></Label>
-            <TextField fx:id="brokerTextField" layoutX="3.0" layoutY="160.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="geen filter" />
-            <Label layoutX="5.0" layoutY="196.0" text="Medewerker" textFill="#2ba8cf">
-               <font>
-                  <Font name="Calibri Bold" size="14.0" />
-               </font></Label>
-            <TextField fx:id="medewerkerTextField" layoutX="4.0" layoutY="215.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="geen filter" />
+                <ComboBox fx:id="statusKlantCombo" layoutX="3.0" layoutY="50.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="Geen filter" />
+                <Label layoutX="88.0" layoutY="255.0" prefHeight="37.0" prefWidth="67.0" rotate="-90.0" text="Filter" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="5.0" layoutY="33.0" text="Status bij klant" textFill="#6e6d6d">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="5.0" layoutY="88.0" text="Status aanbieding" textFill="#6e6d6d">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="statusAanbiedingCombo" layoutX="3.0" layoutY="105.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="Geen filter" />
+                <Label layoutX="5.0" layoutY="143.0" text="Broker" textFill="#6e6d6d">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="brokerTextField" layoutX="3.0" layoutY="160.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="geen filter" />
+                <Label layoutX="5.0" layoutY="196.0" text="Medewerker" textFill="#2ba8cf">
+                    <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="medewerkerTextField" layoutX="4.0" layoutY="215.0" onAction="#refrfilter" prefHeight="25.0" prefWidth="129.0" promptText="geen filter" />
             </children>
         </Pane>
     </left>
@@ -117,30 +133,30 @@
                         <Point3D />
                     </rotationAxis>
                 </Button>
-                        <Button fx:id="aanvraagtoevoegen" mnemonicParsing="false" onAction="#aanvraagToevoegen" style="-fx-background-color: #2ba8cf;" text="Aanvraag toevoegen" textFill="WHITE" translateX="-5.0" translateY="-1.0" ButtonBar.buttonData="BACK_PREVIOUS">
-                <font>
-                    <Font name="Calibri Bold" size="12.0" />
-                </font>
-            </Button>
-            <Button fx:id="aanbiedingmaken" mnemonicParsing="false" onAction="#aanbieden" style="-fx-background-color: #2ba8cf;" text="Medewerker Aanbieden" textFill="WHITE" translateX="-5.0" translateY="-1.0" ButtonBar.buttonData="BACK_PREVIOUS">
-                <font>
-                    <Font name="Calibri Bold" size="12.0" />
-                </font>
-            </Button>
-        </buttons>
-    </ButtonBar>
-</bottom>
+                <Button fx:id="aanvraagtoevoegen" mnemonicParsing="false" onAction="#aanvraagToevoegen" style="-fx-background-color: #2ba8cf;" text="Aanvraag toevoegen" textFill="WHITE" translateX="-5.0" translateY="-1.0" ButtonBar.buttonData="BACK_PREVIOUS">
+                    <font>
+                        <Font name="Calibri Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="aanbiedingmaken" mnemonicParsing="false" onAction="#aanbieden" style="-fx-background-color: #2ba8cf;" text="Medewerker Aanbieden" textFill="WHITE" translateX="-5.0" translateY="-1.0" ButtonBar.buttonData="BACK_PREVIOUS">
+                    <font>
+                        <Font name="Calibri Bold" size="12.0" />
+                    </font>
+                </Button>
+            </buttons>
+        </ButtonBar>
+    </bottom>
     <effect>
         <Blend />
     </effect>
-   <top>
-      <Pane prefHeight="38.0" prefWidth="1024.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-              <Label layoutX="157.0" layoutY="7.0" prefHeight="32.0" prefWidth="300.0" style="-fx-text-fill: #2ba8cf; -fx-background-color: white;" text="BlueMatch - Overzicht" textAlignment="RIGHT" textOverrun="WORD_ELLIPSIS" translateY="-4.0">
-                  <font>
-                      <Font name="Calibri Bold" size="28.0" />
-                  </font>
-              </Label>
+    <top>
+        <Pane prefHeight="38.0" prefWidth="1024.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="157.0" layoutY="7.0" prefHeight="32.0" prefWidth="300.0" style="-fx-text-fill: #2ba8cf; -fx-background-color: white;" text="BlueMatch - Overzicht" textAlignment="RIGHT" textOverrun="WORD_ELLIPSIS" translateY="-4.0">
+                    <font>
+                        <Font name="Calibri Bold" size="28.0" />
+                    </font>
+                </Label>
                 <ImageView fitHeight="56.0" fitWidth="223.0" layoutX="-28.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true" scaleX="0.67" scaleY="0.67" translateY="-1.0">
                     <image>
                         <Image url="@/images/NewsparkLogo.png" />
@@ -149,7 +165,20 @@
                         <Blend />
                     </effect>
                 </ImageView>
-         </children>
-      </Pane>
-   </top>
+                <Button fx:id="optionsButton" layoutX="996.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#onContextMenuRequest" text="...">
+                    <contextMenu>
+                        <ContextMenu fx:id="optionsMenu">
+                            <items>
+                                <Menu fx:id="pluginsMenu" mnemonicParsing="false" text="Plugins">
+                                    <items>
+                                        <MenuItem disable="true" mnemonicParsing="false" text="No plugins loaded" />
+                                    </items>
+                                </Menu>
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </Button>
+            </children>
+        </Pane>
+    </top>
 </BorderPane>

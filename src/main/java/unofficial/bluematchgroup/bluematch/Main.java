@@ -1,8 +1,10 @@
 package unofficial.bluematchgroup.bluematch;
 
+import unofficial.bluematchgroup.bluematch.WindowManager.View;
 import unofficial.bluematchgroup.bluematch.config.Config;
+import unofficial.bluematchgroup.bluematch.controllers.Controller;
 import unofficial.bluematchgroup.bluematch.model.DataSource;
-
+import unofficial.bluematchgroup.bluematch.plugin.PluginManager;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -11,11 +13,16 @@ import java.util.concurrent.TimeUnit;
 
 public class Main extends Application {
 
+    private static final PluginManager PLUGIN_LOADER = new PluginManager();
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        WindowManager.getInstance().initWindow(primaryStage);
+        PLUGIN_LOADER.loadPlugins();
+        View mainView = WindowManager.getInstance().initWindow(primaryStage);
         // controller.updateMainView();
         Config.getInstance().windowWidth = 1024;
+        Controller controller = mainView.getController();
+        controller.updatePluginList(PLUGIN_LOADER);
     }
 
     @Override
