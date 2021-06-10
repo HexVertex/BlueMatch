@@ -6,7 +6,7 @@ import unofficial.bluematchgroup.bluematch.model.Broker;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AddBrokerController implements IController{
+public class AddBrokerController extends BaseController {
 
     @FXML
     private TextField brokernaamField;
@@ -69,9 +69,4 @@ public class AddBrokerController implements IController{
         return Resource.FXML_ADD_BROKER;
     }
 
-    @Override
-    public void updateView() {}
-
-    @Override
-    public void refreshScreen() {}
 }

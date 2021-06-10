@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import static java.time.LocalDate.parse;
 
-public class AddAanvraagController implements IController {
+public class AddAanvraagController extends BaseController {
 
     @FXML
     private ChoiceBox<String> statusklantBox;
@@ -196,10 +196,4 @@ public class AddAanvraagController implements IController {
     public Resource getFxml() {
         return Resource.FXML_ADD_AANVRAAG;
     }
-
-    @Override
-    public void updateView() {}
-
-    @Override
-    public void refreshScreen() {}
 }

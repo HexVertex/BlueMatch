@@ -19,7 +19,7 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.util.Optional;
 
-public class OverzichtDetailsController implements IController {
+public class OverzichtDetailsController extends BaseController {
 
     @FXML
     private TextField refbrokerfield;

@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AddMedewerkerController implements IController {
+public class AddMedewerkerController extends BaseController {
 
     @FXML
     private ChoiceBox<String> statusmdwBox;
@@ -83,10 +83,4 @@ public class AddMedewerkerController implements IController {
     public Resource getFxml() {
         return Resource.FXML_ADD_MEDEWERKER;
     }
-
-    @Override
-    public void updateView() {}
-
-    @Override
-    public void refreshScreen() {}
 }

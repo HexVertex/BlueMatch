@@ -26,7 +26,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EditAanvraagController implements IController {
+public class EditAanvraagController extends BaseController {
 
     @FXML
     private TableColumn<TableView<Aanvraag>, String> columnidaanvraag;

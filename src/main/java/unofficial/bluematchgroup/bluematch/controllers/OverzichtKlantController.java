@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class OverzichtKlantController implements IController {
+public class OverzichtKlantController extends BaseController {
 
     @FXML
     private TableColumn<TableView<Klant>, String> columnklantnaam;

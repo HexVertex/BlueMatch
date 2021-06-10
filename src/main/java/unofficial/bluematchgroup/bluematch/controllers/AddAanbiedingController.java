@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 
 import java.util.ArrayList;
 
-public class AddAanbiedingController implements IController{
+public class AddAanbiedingController extends BaseController {
     @FXML
     private TextField medewerkerField;
     @FXML
@@ -23,12 +23,10 @@ public class AddAanbiedingController implements IController{
     private TextField statusaanbodField;
     @FXML
     private TextArea opmerkingaanbodField;
-
     @FXML
     private TableView<Aanbod> aanbodTable;
     @FXML
     private Label Dialogue;
-
     @FXML
     private ChoiceBox<String> selectMedewerkerBox;
     @FXML
@@ -105,10 +103,4 @@ public class AddAanbiedingController implements IController{
     public Resource getFxml() {
         return Resource.FXML_ADD_AANBIEDING;
     }
-
-    @Override
-    public void updateView() {}
-
-    @Override
-    public void refreshScreen() {}
 }

@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class OverzichtMedewerkerController implements IController {
+public class OverzichtMedewerkerController extends BaseController {
 
     @FXML
     private TableColumn<TableView<Medewerker>, String> columnvoornaam;

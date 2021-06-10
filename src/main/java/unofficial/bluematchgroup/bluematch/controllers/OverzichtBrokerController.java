@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class OverzichtBrokerController implements IController {
+public class OverzichtBrokerController extends BaseController {
 
     @FXML
     private TableColumn<TableView<Broker>, String> columnbrokernaam;

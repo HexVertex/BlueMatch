@@ -6,7 +6,7 @@ import unofficial.bluematchgroup.bluematch.model.Klant;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class AddKlantController implements IController {
+public class AddKlantController extends BaseController {
 
     @FXML
     private TextField klantnaamField;
@@ -69,10 +69,4 @@ public class AddKlantController implements IController {
     public Resource getFxml() {
         return Resource.FXML_ADD_KLANT;
     }
-
-    @Override
-    public void updateView() {}
-
-    @Override
-    public void refreshScreen() {}
 }

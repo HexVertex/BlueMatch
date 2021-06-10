@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class EditAanbodController implements IController {
+public class EditAanbodController extends BaseController {
 
     @FXML
     private TableColumn<TableView<Aanbod>, String> columnmedewerker;

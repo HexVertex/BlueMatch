@@ -6,13 +6,15 @@ import unofficial.bluematchgroup.bluematch.model.Aanbod;
 import unofficial.bluematchgroup.bluematch.model.Aanvraag;
 import unofficial.bluematchgroup.bluematch.model.DataSource;
 import unofficial.bluematchgroup.bluematch.model.OverviewRecord;
-
+import unofficial.bluematchgroup.bluematch.plugin.IBMPlugin;
+import unofficial.bluematchgroup.bluematch.plugin.PluginManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,9 +27,11 @@ import javafx.util.Pair;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-public class Controller implements IController {
+public class Controller extends BaseController {
 
     @FXML
     private TableColumn<TableView<OverviewRecord>, String> columnBroker;
@@ -53,6 +57,12 @@ public class Controller implements IController {
     private Button aanbiedingmaken;
     @FXML
     private ComboBox<String> statusAanbiedingCombo;
+    @FXML
+    private Button optionsButton;
+    @FXML
+    private ContextMenu optionsMenu;
+    @FXML
+    private Menu pluginsMenu;
 
     ObservableList<String> options = FXCollections.observableArrayList("", "Nieuw", "Vrijblijvend aangeboden",
             "Aangeboden Broker", "Aangeboden Eindklant", "Aangeboden"
@@ -68,6 +78,11 @@ public class Controller implements IController {
         statusKlantCombo.setValue("");
         statusAanbiedingCombo.setItems(optionsaanb);
         statusAanbiedingCombo.setValue("");
+    }
+
+    @FXML
+    private void onContextMenuRequest(MouseEvent event) {
+        optionsButton.getContextMenu().show(optionsButton, event.getScreenX(), event.getScreenY());
     }
 
     @FXML
@@ -221,6 +236,25 @@ public class Controller implements IController {
             }
         });
     }
+
+    public void updatePluginList(PluginManager loader) {
+        List<MenuItem> items = new ArrayList<MenuItem>();
+        for(IBMPlugin plugin : loader.getPlugins()) {
+            MenuItem item = new MenuItem(plugin.getDisplayName() + " - " + plugin.getVersionString());
+            item.setOnAction(new EventHandler<ActionEvent>(){
+                public void handle(ActionEvent e) {
+                    System.out.println("Opening " + plugin.getId());
+                    loader.openPlugin(plugin);
+                }
+            });
+            items.add(item);
+        }
+        if(items.size() > 0) {
+            pluginsMenu.getItems().clear();
+            pluginsMenu.getItems().addAll(items);
+        }
+    }
+
 
     @Override
     public void refreshScreen() {
