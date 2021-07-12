@@ -31,11 +31,11 @@ import unofficial.bluematchgroup.bluematch.WindowManager;
 public class PluginManager {
 
     private static ArrayList<IBMPlugin> plugins = new ArrayList<IBMPlugin>();
-    private static final String PLUGIN_DIRECTORY = "plugins";
+    public static final String PLUGIN_DIRECTORY = "plugins";
 
     private static final byte[] HEX_ARRAY = "0123456789ABCDEF".getBytes(StandardCharsets.US_ASCII);
 
-    public static String bytesToHex(byte[] bytes) {
+    private static String bytesToHex(byte[] bytes) {
         byte[] hexChars = new byte[bytes.length * 2];
         for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
@@ -151,12 +151,11 @@ public class PluginManager {
         stage.initOwner(WindowManager.getInstance().getWindow());
         stage.setTitle(plugin.getDisplayName() + " - " + plugin.getVersionString());
         Scene pluginScene = plugin.initScene(stage);
-        if(pluginScene != null) {
+        if (pluginScene != null) {
             stage.setScene(pluginScene);
             stage.sizeToScene();
             stage.show();
-        }
-        else {
+        } else {
             System.out.println("Failed to open plugin: " + plugin.getDisplayName() + " - " + plugin.getVersionString());
         }
         return 0;
